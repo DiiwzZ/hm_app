@@ -1,0 +1,562 @@
+/* เพิ่มที่ด้านบนสุดของไฟล์ */
+:root {
+    --primary-red: #e50010;
+    --text-gray: #333333;
+    --background-gray: #f4f4f4;
+    --font-family: 'HM Slussen', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: white;
+    font-family: var(--font-family) !important;
+    padding-bottom: 90px;  /* เพิ่ม padding ด้านล่าง */
+}
+
+.bottom-nav {
+    position: fixed;
+    bottom: 16px; /* เพิ่มระยะห่างจากด้านล่าง */
+    left: 16px;
+    right: 16px;
+    background: rgba(255, 255, 255, 0.85); /* ทำให้พื้นหลังโปร่งใสขึ้น */
+    backdrop-filter: blur(10px); /* เพิ่ม blur effect */
+    -webkit-backdrop-filter: blur(10px); /* สำหรับ Safari */
+    display: flex;
+    justify-content: space-around;
+    padding: 8px;
+    gap: 4px; /* ลดระยะห่างระหว่างปุ่ม */
+    border-radius: 16px; /* เพิ่มขอบมน */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1); /* ปรับเงา */
+    z-index: 100;
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: row; /* เปลี่ยนเป็นแนวนอน */
+    align-items: center;
+    text-decoration: none;
+    color: var(--text-gray);
+    position: relative;
+    padding: 8px 12px;
+    transition: all 0.3s ease;
+    border-radius: 20px;
+    gap: 8px; /* ระยะห่างระหว่างไอคอนกับข้อความ */
+}
+
+/* ซ่อนข้อความปกติ */
+.nav-item span:last-child {
+    font-family: var(--font-family);
+    font-size: 13px;
+    font-weight: 400;
+    opacity: 0;
+    width: 0;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+}
+
+/* แสดงข้อความเมื่อ active */
+.nav-item.active {
+    color: white;
+    background: rgba(229, 0, 16, 0.8); /* ทำให้สีอ่อนลง */
+    padding: 8px 16px;
+}
+
+.nav-item.active span:last-child {
+    opacity: 1;
+    width: auto;
+    margin-left: 4px;
+}
+
+/* ปรับขนาดไอคอน */
+.nav-icon {
+    width: 22px;
+    height: 22px;
+    stroke-width: 1.5;
+    flex-shrink: 0; /* ป้องกันไอคอนหด */
+}
+
+/* ปรับ active state */
+.nav-item.active .nav-icon {
+    stroke: white;
+}
+
+/* ลบ animation เก่า */
+.nav-item.active::before {
+    display: none;
+}
+
+/* อนิเมชั่นเมื่อกด */
+.nav-item:active {
+    transform: scale(0.95);
+}
+
+.nav-item:active .nav-icon {
+    transform: translateY(-2px);
+}
+
+/* อนิเมชั่นเมื่อ hover */
+.nav-item:hover::before {
+    transform: scale(1);
+}
+
+/* ปรับ body ให้มี padding ด้านล่างเพื่อไม่ให้เนื้อหาถูกซ่อนใต้ bottom nav */
+body {
+    padding-bottom: 90px; /* เพิ่ม padding เพื่อให้เนื้อหาไม่ถูกบัง */
+}
+
+/* ปรับปรุง icon ให้เป็น SVG แทนอิโมจิ */
+.home-icon, .search-icon, .wishlist-icon, .profile-icon {
+    width: 24px;
+    height: 24px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* Header Styles */
+.mobile-header {
+    position: sticky;
+    top: 0;
+    background: white;
+    z-index: 95;
+}
+
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 24px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+/* เพิ่ม spacer แทนปุ่มเมนู */
+.spacer {
+    width: 24px; /* ให้มีขนาดเท่ากับไอคอนตะกร้าเพื่อความสมดุล */
+}
+
+.logo {
+    height: 44px; /* เพิ่มขนาดโลโก้ */
+    width: auto;
+    display: block;
+}
+
+/* ปรับแต่งไอคอนตะกร้า */
+.cart-btn {
+    padding: 8px;
+    color: #333;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cart-icon {
+    width: 24px;
+    height: 24px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* Search Container */
+.search-container {
+    padding: 12px 16px;  /* เพิ่ม padding */
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.search-input {
+    width: 100%;
+    padding: 12px 16px;  /* เพิ่ม padding */
+    border-radius: 4px;  /* ลดความโค้งของมุม */
+    border: 1px solid #e0e0e0;
+    background: #f5f5f5;
+    font-size: 14px;
+}
+
+.search-input::placeholder {
+    color: #666;
+}
+
+/* Category Tabs */
+.category-tabs {
+    display: flex;
+    padding: 0;
+    background: white;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    border-bottom: 1px solid #e0e0e0;
+    position: sticky;
+    top: 0;
+    z-index: 90;
+}
+
+.category-tabs::-webkit-scrollbar {
+    display: none; /* Chrome, Safari */
+}
+
+.tab-item {
+    padding: 16px;
+    color: #333;
+    text-decoration: none;
+    font-size: 14px;
+    white-space: nowrap;
+    position: relative;
+    transition: color 0.3s ease;
+    font-family: var(--font-family);
+    font-weight: 400;
+}
+
+.tab-item.active {
+    color: var(--primary-red);
+    font-weight: 600;
+}
+
+.tab-item.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 16px;
+    right: 16px;
+    height: 2px;
+    background: var(--primary-red);
+}
+
+/* เพิ่ม animation เมื่อ hover */
+.tab-item:hover {
+    color: var(--primary-red);
+}
+
+.tab-item:hover::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 16px;
+    right: 16px;
+    height: 2px;
+    background: var(--primary-red);
+    opacity: 0.5;
+}
+
+/* Promotion Banner */
+.promo-banner {
+    background: linear-gradient(to right, #fff5f5, #ffffff);
+    padding: 16px;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.promo-toggle {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    padding: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+}
+
+.toggle-icon {
+    width: 20px;
+    height: 20px;
+    stroke: #666;
+    fill: none;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: transform 0.3s ease;
+}
+
+.promo-banner.collapsed .toggle-icon {
+    transform: rotate(180deg);
+}
+
+.promo-collapsed-text {
+    display: none;
+    font-size: 13px;
+    color: var(--primary-red);
+    font-weight: 500;
+    padding-right: 40px;
+    line-height: 1.4;
+    font-family: var(--font-family);
+}
+
+.promo-banner.collapsed {
+    padding: 12px 16px;
+    .promo-collapsed-text {
+        display: block;
+    }
+    .promo-content {
+        display: none;
+    }
+}
+
+.promo-content {
+    padding-right: 40px;
+}
+
+.promo-content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.promo-main {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.promo-text {
+    color: var(--primary-red);
+    font-size: 15px;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+    padding: 8px 12px;
+    background: rgba(229, 0, 16, 0.05);
+    border-radius: 8px;
+    position: relative;
+    font-family: var(--font-family);
+}
+
+.promo-text::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: var(--primary-red);
+    border-radius: 50%;
+    margin-right: 12px;
+    flex-shrink: 0;
+}
+
+.promo-note {
+    font-size: 13px;
+    line-height: 1.5;
+    color: #666;
+    background: #fafafa;
+    padding: 12px 16px;
+    border-radius: 8px;
+    border: 1px solid #f0f0f0;
+    position: relative;
+    font-family: var(--font-family);
+    font-weight: 400;
+}
+
+.promo-note::before {
+    content: 'ℹ️';
+    position: absolute;
+    left: -6px;
+    top: -6px;
+    background: white;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    border: 1px solid #f0f0f0;
+}
+
+.promo-note-sub {
+    display: block;
+    margin-top: 8px;
+    color: #888;
+    font-size: 12px;
+    font-style: italic;
+}
+
+.promo-title {
+    font-size: 20px;
+    margin: 0;
+    color: var(--text-gray);
+}
+
+.promo-details {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.promo-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.promo-label {
+    font-size: 14px;
+    color: var(--text-gray);
+}
+
+.promo-highlight {
+    font-size: 18px;
+    font-weight: bold;
+    color: var(--primary-red);
+}
+
+.shop-now-btn {
+    background: var(--primary-red);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 24px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-top: 8px;
+}
+
+.shop-now-btn:hover {
+    background-color: #cc0000;
+}
+
+.shop-now-btn:active {
+    transform: scale(0.98);
+}
+
+/* Collection Cards */
+.collection-card {
+    position: relative;
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 8px;
+    text-decoration: none;
+    display: block;
+}
+
+.collection-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+}
+
+.collection-image-container {
+    position: relative;
+    aspect-ratio: 3/4;
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+.collection-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.collection-card:hover .collection-image {
+    transform: scale(1.05);
+}
+
+.ar-view-btn {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+.ar-view-btn:hover {
+    background: white;
+    transform: scale(1.1);
+}
+
+.ar-icon {
+    width: 20px;
+    height: 20px;
+    stroke: #333;
+    fill: none;
+    stroke-width: 2;
+    transition: stroke 0.3s ease;
+}
+
+.ar-view-btn:hover .ar-icon {
+    stroke: var(--primary-red);
+}
+
+.collection-info {
+    padding: 8px 0;
+    background: white;
+}
+
+.collection-info h3 {
+    margin: 0;
+    font-size: 14px;
+    font-weight: 400;
+    color: #333;
+    font-family: var(--font-family);
+}
+
+.collection-info .price {
+    margin: 6px 0 0;
+    font-size: 14px;
+    color: var(--primary-red);
+    font-weight: 500;
+    position: relative;
+    display: inline-block;
+    font-family: var(--font-family);
+}
+
+.collection-info .price::after {
+    content: '→';
+    margin-left: 4px;
+    transition: transform 0.3s ease;
+    display: inline-block;
+}
+
+.collection-card:hover .price::after {
+    transform: translateX(4px);
+}
+
+/* ปรับ grid gap และ padding */
+.collections-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    padding: 0;
+    margin-bottom: 8px;  /* ลด margin ด้านล่าง */
+}
+
+/* ปรับ section title */
+.section-title {
+    font-size: 20px;
+    font-weight: 500;
+    margin: 0 0 20px;
+    color: #333;
+    padding: 0;
+    text-align: left;
+    font-family: var(--font-family);
+}
+
+/* ปรับ product content */
+.product-content {
+    padding: 16px 16px 16px;  /* ลด padding ด้านล่าง */
+} 

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H&M Thailand</title>
+    <link rel="stylesheet" href="styles/mobile-nav.css">
+    <script src="scripts/navigation.js" defer></script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="mobile-header">
+        <div class="main-header">
+            <div class="spacer"></div>
+            <img src="https://th.hm.com/static/version1740552873/frontend/GillCapital/hmthen/en_US/images/logo.svg" 
+                 alt="H&M" 
+                 class="logo">
+            <a href="#" class="cart-btn">
+                <svg class="cart-icon" viewBox="0 0 24 24">
+                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <path d="M16 10a4 4 0 0 1-8 0"></path>
+                </svg>
+            </a>
+        </div>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <nav class="category-tabs">
+        <a href="/women" class="tab-item active" data-section="Women">Women</a>
+        <a href="/men" class="tab-item" data-section="Men">Men</a>
+        <a href="/baby" class="tab-item" data-section="Baby">Baby</a>
+        <a href="/kids" class="tab-item" data-section="Kids">Kids</a>
+        <a href="/sport" class="tab-item" data-section="Sport">Sport</a>
+        <a href="/home" class="tab-item" data-section="HOME">HOME</a>
+    </nav>
+
+    <!-- Promotion Banner -->
+    <section class="promo-banner">
+        <button class="promo-toggle">
+            <svg class="toggle-icon" viewBox="0 0 24 24">
+                <polyline points="6 9 12 15 18 9"></polyline>
+            </svg>
+        </button>
+        <div class="promo-collapsed-text">โปรโมชั่น: ช้อป 3 ชิ้น ลด 15% | ช้อป 5 ชิ้น ลด 25%</div>
+        <div class="promo-content">
+            <div class="promo-main">
+                <div class="promo-text">ที่ร้านและออนไลน์: ช้อป 3 ชิ้น ลด 15%</div>
+                <div class="promo-text">ออนไลน์เท่านั้น: ช้อป 5 ชิ้น ลด 25%</div>
+            </div>
+            <div class="promo-note">
+                พิเศษสำหรับสมาชิก H&M เท่านั้น เฉพาะสินค้าราคาปกติตั้งแต่วันนี้ - 2 มีนาคม 2568 
+                <span class="promo-note-sub">(ระบบจะคำนวณส่วนลดและแสดงในตะกร้าสินค้าของคุณ)</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Product Grid -->
+    <main class="product-content">
+        <h2 class="section-title">คอลเลกชันที่คัดสรร</h2>
+        <div class="collections-grid">
+            <a href="dresses.html" class="collection-card">
+                <div class="collection-image-container">
+                    <img src="https://dgbvgo13heod7.cloudfront.net/2025/banners/wk08/Dresses-2x3-CE-Women-wk08-09.jpg" 
+                         alt="เดรส" 
+                         class="collection-image">
+                </div>
+                <div class="collection-info">
+                    <h3>เดรส</h3>
+                    <p class="price">ดูเพิ่มเติม</p>
+                </div>
+            </a>
+
+            <article class="collection-card">
+                <div class="collection-image-container">
+                    <img src="https://dgbvgo13heod7.cloudfront.net/2025/banners/wk09/WOMEN-CE-EDITS-WORKWEAR.jpg" 
+                         alt="มาใหม่: แฟชั่นชุดทำงาน" 
+                         class="collection-image">
+                </div>
+                <div class="collection-info">
+                    <h3>มาใหม่: แฟชั่นชุดทำงาน</h3>
+                    <p class="price">ดูเพิ่มเติม</p>
+                </div>
+            </article>
+
+            <article class="collection-card">
+                <div class="collection-image-container">
+                    <img src="https://dgbvgo13heod7.cloudfront.net/2025/banners/wk08/Tops-2x3-CE-Women-wk08-09.jpg" 
+                         alt="เสื้อ" 
+                         class="collection-image">
+                </div>
+                <div class="collection-info">
+                    <h3>เสื้อ</h3>
+                    <p class="price">ดูเพิ่มเติม</p>
+                </div>
+            </article>
+
+            <article class="collection-card">
+                <div class="collection-image-container">
+                    <img src="https://dgbvgo13heod7.cloudfront.net/2025/banners/wk08/WOMEN-LOCAL-BASICS-ce.jpg" 
+                         alt="ไอเทมแบบเบสิก" 
+                         class="collection-image">
+                </div>
+                <div class="collection-info">
+                    <h3>ไอเทมแบบเบสิก</h3>
+                    <p class="price">ดูเพิ่มเติม</p>
+                </div>
+            </article>
+        </div>
+    </main>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <a href="/women" class="nav-item active" data-section="Women">
+            <svg class="nav-icon home-icon" viewBox="0 0 24 24">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+            </svg>
+            <span>Home</span>
+        </a>
+        <a href="#" class="nav-item">
+            <svg class="nav-icon search-icon" viewBox="0 0 24 24">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <span>ค้นหา</span>
+        </a>
+        <a href="#" class="nav-item">
+            <svg class="nav-icon wishlist-icon" viewBox="0 0 24 24">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+            </svg>
+            <span>ชื่นชอบ</span>
+        </a>
+        <a href="#" class="nav-item">
+            <svg class="nav-icon profile-icon" viewBox="0 0 24 24">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+            <span>บัญชี</span>
+        </a>
+    </nav>
+</body>
+</html> 
