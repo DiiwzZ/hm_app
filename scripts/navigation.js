@@ -1,33 +1,67 @@
 // กำหนดค่าเริ่มต้นสำหรับ active tab
 let currentSection = 'Women';
 
-// จัดการ Bottom Navigation
-document.querySelectorAll('.nav-item').forEach(item => {
-    item.addEventListener('click', (e) => {
-        e.preventDefault();
-        const navText = item.querySelector('span').textContent.trim();
-        
-        // ถ้าเป็นปุ่ม Home ให้ไปที่หน้า Women
-        if (navText === 'Home') {
-            updateActiveStates('Women');
-        }
-        // สำหรับปุ่มอื่นๆ
-        else {
-            document.querySelectorAll('.nav-item').forEach(i => {
-                i.classList.remove('active');
-            });
+document.addEventListener('DOMContentLoaded', () => {
+    // จัดการ navbar
+    const navItems = document.querySelectorAll('.nav-item');
+    
+    navItems.forEach(item => {
+        item.addEventListener('click', (e) => {
+            // ถ้าเป็นลิงก์ภายใน (#) ให้ป้องกันการ reload หน้า
+            if (item.getAttribute('href') === '#') {
+                e.preventDefault();
+            }
+            
+            // ลบ active state จากทุกปุ่ม
+            navItems.forEach(navItem => navItem.classList.remove('active'));
+            
+            // เพิ่ม active state ให้ปุ่มที่กด
+            item.classList.add('active');
+        });
+    });
+
+    // กำหนด active state ตามหน้าปัจจุบัน
+    const currentPath = window.location.pathname;
+    navItems.forEach(item => {
+        const href = item.getAttribute('href');
+        if (href && (
+            currentPath.endsWith(href) || 
+            (currentPath === '/' && href === 'index.html') ||
+            (currentPath.endsWith('index.html') && href === 'index.html') ||
+            (currentPath.endsWith('search.html') && href === 'search.html')
+        )) {
             item.classList.add('active');
         }
     });
-});
 
-// จัดการ Category Tabs
-document.querySelectorAll('.tab-item').forEach(tab => {
-    tab.addEventListener('click', (e) => {
-        e.preventDefault();
-        const tabText = tab.textContent.trim();
-        updateActiveStates(tabText);
+    // จัดการ Category Tabs
+    const categoryTabs = document.querySelectorAll('.tab-item');
+    categoryTabs.forEach(tab => {
+        tab.addEventListener('click', (e) => {
+            e.preventDefault();
+            categoryTabs.forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+        });
     });
+
+    // จัดการ Promo Banner
+    const promoBanner = document.querySelector('.promo-banner');
+    const promoToggle = document.querySelector('.promo-toggle');
+
+    if (promoToggle && promoBanner) {
+        const isCollapsed = localStorage.getItem('promoBannerCollapsed') === 'true';
+        if (isCollapsed) {
+            promoBanner.classList.add('collapsed');
+        }
+
+        promoToggle.addEventListener('click', () => {
+            promoBanner.classList.toggle('collapsed');
+            localStorage.setItem(
+                'promoBannerCollapsed', 
+                promoBanner.classList.contains('collapsed')
+            );
+        });
+    }
 });
 
 // ฟังก์ชันสำหรับอัพเดท active states
@@ -87,28 +121,5 @@ function updateContent(section) {
 window.addEventListener('popstate', (event) => {
     if (event.state && event.state.section) {
         updateActiveStates(event.state.section);
-    }
-});
-
-// จัดการการย่อ/ขยาย Promotion Banner
-document.addEventListener('DOMContentLoaded', () => {
-    const promoBanner = document.querySelector('.promo-banner');
-    const promoToggle = document.querySelector('.promo-toggle');
-
-    if (promoToggle && promoBanner) {
-        // ตรวจสอบสถานะที่บันทึกไว้
-        const isCollapsed = localStorage.getItem('promoBannerCollapsed') === 'true';
-        if (isCollapsed) {
-            promoBanner.classList.add('collapsed');
-        }
-
-        promoToggle.addEventListener('click', () => {
-            promoBanner.classList.toggle('collapsed');
-            // บันทึกสถานะ
-            localStorage.setItem(
-                'promoBannerCollapsed', 
-                promoBanner.classList.contains('collapsed')
-            );
-        });
     }
 }); 

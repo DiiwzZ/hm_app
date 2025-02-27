@@ -16,94 +16,87 @@ body {
 
 .bottom-nav {
     position: fixed;
-    bottom: 16px; /* เพิ่มระยะห่างจากด้านล่าง */
+    bottom: 16px;
     left: 16px;
     right: 16px;
-    background: rgba(255, 255, 255, 0.85); /* ทำให้พื้นหลังโปร่งใสขึ้น */
-    backdrop-filter: blur(10px); /* เพิ่ม blur effect */
-    -webkit-backdrop-filter: blur(10px); /* สำหรับ Safari */
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     display: flex;
     justify-content: space-around;
     padding: 8px;
-    gap: 4px; /* ลดระยะห่างระหว่างปุ่ม */
-    border-radius: 16px; /* เพิ่มขอบมน */
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1); /* ปรับเงา */
+    gap: 4px;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     z-index: 100;
 }
 
 .nav-item {
     display: flex;
-    flex-direction: row; /* เปลี่ยนเป็นแนวนอน */
+    flex-direction: row-reverse;
     align-items: center;
     text-decoration: none;
-    color: var(--text-gray);
+    color: #666;
     position: relative;
     padding: 8px 12px;
     transition: all 0.3s ease;
-    border-radius: 20px;
-    gap: 8px; /* ระยะห่างระหว่างไอคอนกับข้อความ */
+    border-radius: 12px;
+    gap: 8px;
+    min-width: 48px;
+    justify-content: center;
+    overflow: hidden;
 }
 
-/* ซ่อนข้อความปกติ */
-.nav-item span:last-child {
+.nav-item span {
     font-family: var(--font-family);
     font-size: 13px;
     font-weight: 400;
     opacity: 0;
-    width: 0;
-    overflow: hidden;
+    transform: translateX(10px);
     transition: all 0.3s ease;
     white-space: nowrap;
 }
 
-/* แสดงข้อความเมื่อ active */
-.nav-item.active {
-    color: white;
-    background: rgba(229, 0, 16, 0.8); /* ทำให้สีอ่อนลง */
-    padding: 8px 16px;
-}
-
-.nav-item.active span:last-child {
-    opacity: 1;
-    width: auto;
-    margin-left: 4px;
-}
-
-/* ปรับขนาดไอคอน */
 .nav-icon {
-    width: 22px;
-    height: 22px;
-    stroke-width: 1.5;
-    flex-shrink: 0; /* ป้องกันไอคอนหด */
+    width: 24px;
+    height: 24px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: all 0.3s ease;
+    flex-shrink: 0;
 }
 
-/* ปรับ active state */
+.nav-item.active {
+    color: var(--primary-red);
+    background: rgba(229, 0, 16, 0.1);
+    padding-left: 16px;
+    padding-right: 16px;
+    justify-content: flex-end;
+    width: auto;
+}
+
+.nav-item.active span {
+    opacity: 1;
+    transform: translateX(0);
+    margin-right: 4px;
+}
+
 .nav-item.active .nav-icon {
-    stroke: white;
+    stroke: var(--primary-red);
+    transform: scale(1.1);
 }
 
-/* ลบ animation เก่า */
-.nav-item.active::before {
-    display: none;
-}
-
-/* อนิเมชั่นเมื่อกด */
+/* ปรับแต่ง animation เมื่อกดปุ่ม */
 .nav-item:active {
     transform: scale(0.95);
 }
 
-.nav-item:active .nav-icon {
-    transform: translateY(-2px);
-}
-
-/* อนิเมชั่นเมื่อ hover */
-.nav-item:hover::before {
-    transform: scale(1);
-}
-
-/* ปรับ body ให้มี padding ด้านล่างเพื่อไม่ให้เนื้อหาถูกซ่อนใต้ bottom nav */
-body {
-    padding-bottom: 90px; /* เพิ่ม padding เพื่อให้เนื้อหาไม่ถูกบัง */
+/* เพิ่ม hover effect */
+.nav-item:hover:not(.active) {
+    background: rgba(229, 0, 16, 0.05);
 }
 
 /* ปรับปรุง icon ให้เป็น SVG แทนอิโมจิ */
