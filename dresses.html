@@ -7,6 +7,60 @@
     <link rel="stylesheet" href="styles/mobile-nav.css">
     <link rel="stylesheet" href="styles/dresses.css">
     <script src="scripts/image-slider.js" defer></script>
+    <style>
+        .wishlist-btn {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.95);
+            border: none;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            z-index: 2;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .wishlist-btn:hover {
+            transform: scale(1.1);
+            background: white;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .wishlist-btn.active {
+            background: #e50010;
+        }
+
+        .heart-icon {
+            width: 24px;
+            height: 24px;
+            stroke: #333;
+            fill: none;
+            stroke-width: 2;
+            transition: all 0.3s ease;
+        }
+
+        .wishlist-btn.active .heart-icon {
+            stroke: white;
+            fill: white;
+            animation: heartPop 0.4s ease-out;
+        }
+
+        @keyframes heartPop {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
+        }
+
+        .wishlist-btn:active {
+            transform: scale(0.95);
+        }
+    </style>
 </head>
 <body>
     <!-- Header -->
@@ -98,7 +152,7 @@
                         </figure>
                     </div>
                 </div>
-                <button class="wishlist-btn">
+                <button class="wishlist-btn" onclick="toggleWishlist(this)">
                     <svg viewBox="0 0 24 24" class="heart-icon">
                         <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
                     </svg>
@@ -130,7 +184,7 @@
                         </figure>
                     </div>
                 </div>
-                <button class="wishlist-btn">
+                <button class="wishlist-btn" onclick="toggleWishlist(this)">
                     <svg viewBox="0 0 24 24" class="heart-icon">
                         <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
                     </svg>
@@ -177,5 +231,10 @@
     </nav>
 
     <script src="scripts/navigation.js"></script>
+    <script>
+        function toggleWishlist(button) {
+            button.classList.toggle('active');
+        }
+    </script>
 </body>
 </html> 
