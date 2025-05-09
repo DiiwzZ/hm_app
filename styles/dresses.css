@@ -153,14 +153,36 @@
     padding: 8px;
     cursor: pointer;
     z-index: 2;
+    background: white;
+    border-radius: 50%;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
 }
 
-.heart-icon {
+.wishlist-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.wishlist-btn:active {
+    transform: scale(0.95);
+}
+
+.wishlist-icon {
     width: 24px;
     height: 24px;
     stroke: #000;
     fill: none;
     stroke-width: 1.5;
+}
+
+.wishlist-btn.active .wishlist-icon {
+    fill: #e50010;
+    stroke: #e50010;
 }
 
 .size-badge {
@@ -301,4 +323,281 @@
     height: 100%;
     object-fit: cover;
     border-radius: 8px;
+}
+
+/* Dresses Page Styles */
+:root {
+    --card-radius: 20px;
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+}
+
+.page-title-container {
+    padding: var(--spacing-lg) var(--spacing-md);
+    background: linear-gradient(135deg, #fff5f5, #ffffff);
+    text-align: center;
+}
+
+.page-title {
+    font-size: 28px;
+    font-weight: 600;
+    margin: 0;
+    background: linear-gradient(45deg, var(--primary-red), #ff4d4d);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: 1px;
+}
+
+.sort-filter-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--spacing-md);
+    background: white;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    position: sticky;
+    top: 0;
+    z-index: 90;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+
+.filter-count {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-gray);
+}
+
+.view-btn {
+    background: none;
+    border: none;
+    padding: var(--spacing-sm);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform var(--transition-smooth);
+}
+
+.view-btn:active {
+    transform: scale(0.95);
+}
+
+.grid-icon {
+    width: 24px;
+    height: 24px;
+    stroke: var(--text-gray);
+    fill: none;
+    stroke-width: 1.5;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-md);
+    padding: var(--spacing-md);
+    background: var(--background-gray);
+}
+
+.product-card {
+    background: white;
+    border-radius: var(--card-radius);
+    overflow: hidden;
+    position: relative;
+    transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
+    box-shadow: var(--shadow-sm);
+}
+
+.product-card:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+}
+
+.product-image-container {
+    position: relative;
+    aspect-ratio: 3/4;
+    overflow: hidden;
+}
+
+.product-gallery-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-smooth);
+}
+
+.product-card:hover .product-gallery-image {
+    transform: scale(1.05);
+}
+
+.product-info {
+    padding: var(--spacing-md);
+    background: white;
+}
+
+.product-info h3 {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--text-gray);
+    margin-bottom: var(--spacing-sm);
+}
+
+.price {
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--primary-red);
+    margin: 0;
+    margin-bottom: var(--spacing-sm);
+}
+
+.new-arrival {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 500;
+    color: white;
+    background: var(--primary-red);
+    padding: 4px 8px;
+    border-radius: 12px;
+    margin: 0;
+}
+
+.size-badge {
+    position: absolute;
+    bottom: var(--spacing-md);
+    left: var(--spacing-md);
+    background: rgba(255, 255, 255, 0.9);
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-gray);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    box-shadow: var(--shadow-sm);
+    z-index: 2;
+}
+
+.back-btn {
+    padding: var(--spacing-sm);
+    color: var(--text-gray);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform var(--transition-smooth);
+}
+
+.back-btn:active {
+    transform: scale(0.95);
+}
+
+.back-icon {
+    width: 24px;
+    height: 24px;
+    stroke: currentColor;
+    fill: none;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* Product Gallery Animation */
+.product-gallery-items {
+    position: relative;
+    height: 100%;
+}
+
+.product-gallery-item {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.product-gallery-item.active {
+    opacity: 1;
+}
+
+.product-gallery-figure {
+    margin: 0;
+    height: 100%;
+}
+
+/* Loading Skeleton Animation */
+@keyframes shimmer {
+    0% {
+        background-position: -200% 0;
+    }
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+.skeleton {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+}
+
+/* Responsive Grid */
+@media (min-width: 768px) {
+    .product-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .product-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+.old-price {
+    text-decoration: line-through;
+    color: #999;
+    font-size: 14px;
+    margin-left: 8px;
+}
+
+.new-price {
+    color: #e50010;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.discount-label {
+    color: #fff;
+    background: #e50010;
+    border-radius: 12px;
+    font-size: 12px;
+    padding: 2px 8px;
+    font-weight: 500;
+}
+
+.price-group {
+    display: flex;
+    align-items: center;
+    margin: 8px 0;
+}
+
+.fabric-tag {
+    display: inline-block;
+    background: #f0f0f0;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    color: #333;
+    margin-top: 4px;
+}
+
+.tag-group {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-top: 8px;
 } 

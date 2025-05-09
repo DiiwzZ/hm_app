@@ -373,82 +373,96 @@ body {
     display: flex;
     flex-direction: column;
     background: #fafafa;
+    padding-bottom: 60px;
 }
 
 /* Bottom Navigation */
 .bottom-nav {
     position: fixed;
-    bottom: 16px;
-    left: 16px;
-    right: 16px;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: white;
     display: flex;
     justify-content: space-around;
-    padding: 8px;
-    gap: 4px;
-    border-radius: 16px;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    z-index: 100;
+    align-items: center;
+    padding: 8px 0;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    height: 60px;
 }
 
 .nav-item {
     display: flex;
-    flex-direction: row-reverse;
+    flex-direction: column;
     align-items: center;
     text-decoration: none;
-    color: #666;
+    color: #333;
+    font-size: 12px;
+    padding: 4px 0;
+    width: 25%;
     position: relative;
-    padding: 8px 12px;
-    transition: all 0.3s ease;
-    border-radius: 12px;
-    gap: 8px;
-    min-width: 48px;
-    justify-content: center;
-    overflow: hidden;
-}
-
-.nav-item span {
-    font-family: var(--font-family);
-    font-size: 13px;
-    font-weight: 400;
-    opacity: 0;
-    transform: translateX(10px);
-    transition: all 0.3s ease;
-    white-space: nowrap;
 }
 
 .nav-icon {
     width: 24px;
     height: 24px;
+    margin-bottom: 4px;
     stroke: currentColor;
     fill: none;
     stroke-width: 2;
     stroke-linecap: round;
     stroke-linejoin: round;
-    transition: all 0.3s ease;
-    flex-shrink: 0;
+}
+
+.nav-item span {
+    font-size: 11px;
+    line-height: 1.2;
+    text-align: center;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .nav-item.active {
-    color: var(--primary-red);
-    background: rgba(229, 0, 16, 0.1);
-    padding-left: 16px;
-    padding-right: 16px;
-    justify-content: flex-end;
-    width: auto;
+    color: #e50010;
 }
 
-.nav-item.active span {
-    opacity: 1;
-    transform: translateX(0);
-    margin-right: 4px;
+/* ปรับขนาดไอคอนหน้าแรกให้พอดี */
+.nav-item:first-child .nav-icon {
+    width: 22px;
+    height: 22px;
+    margin-bottom: 5px;
 }
 
+/* เพิ่มระยะห่างระหว่างไอคอนและข้อความ */
+.nav-item:first-child {
+    padding-top: 2px;
+}
+
+/* ปรับขนาดไอคอนอื่นๆ ให้สม่ำเสมอ */
+.nav-item:not(:first-child) .nav-icon {
+    width: 24px;
+    height: 24px;
+    margin-bottom: 4px;
+}
+
+/* ปรับแต่ง hover effect */
+.nav-item:hover {
+    color: #e50010;
+    transition: color 0.2s ease;
+}
+
+/* ปรับแต่ง active state */
 .nav-item.active .nav-icon {
-    stroke: var(--primary-red);
-    transform: scale(1.1);
+    stroke-width: 2.5;
+}
+
+/* เพิ่ม animation เมื่อกด */
+.nav-item:active {
+    transform: scale(0.95);
+    transition: transform 0.1s ease;
 }
 
 /* Adjust footer links to work with bottom nav */

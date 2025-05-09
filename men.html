@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Men - H&M Thailand</title>
+    <link rel="stylesheet" href="styles/mobile-nav.css">
+    <link rel="stylesheet" href="styles/dresses.css">
+    <script src="scripts/image-slider.js" defer></script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="mobile-header">
+        <div class="main-header">
+            <a href="index.html" class="back-btn">
+                <svg class="back-icon" viewBox="0 0 24 24">
+                    <path d="M19 12H5M12 19l-7-7 7-7"/>
+                </svg>
+            </a>
+            <img src="https://th.hm.com/static/version1740552873/frontend/GillCapital/hmthen/en_US/images/logo.svg" 
+                 alt="H&M" 
+                 class="logo">
+            <a href="#" class="cart-btn">
+                <svg class="cart-icon" viewBox="0 0 24 24">
+                    <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                    <line x1="3" y1="6" x2="21" y2="6"></line>
+                    <path d="M16 10a4 4 0 0 1-8 0"></path>
+                </svg>
+            </a>
+        </div>
+    </header>
+
+    <!-- Page Title -->
+    <div class="page-title-container">
+        <h1 class="page-title">MEN'S FASHION</h1>
+    </div>
+
+    <!-- Navigation Tabs -->
+    <nav class="category-tabs">
+        <a href="dresses.html" class="tab-item">สุภาพสตรี</a>
+        <a href="men.html" class="tab-item active">สุภาพบุรุษ</a>
+        <a href="#" class="tab-item">เด็กอ่อน</a>
+        <a href="#" class="tab-item">เด็ก</a>
+        <a href="#" class="tab-item">กีฬา</a>
+        <a href="#" class="tab-item">บ้าน</a>
+    </nav>
+
+    <!-- Category Filters -->
+    <div class="category-filters">
+        <div class="filter-scroll">
+            <a href="#" class="filter-btn active">ทั้งหมด</a>
+            <a href="#" class="filter-btn">เสื้อเชิ้ต</a>
+            <a href="#" class="filter-btn">เสื้อยืด</a>
+            <a href="#" class="filter-btn">รักโลก</a>
+            <a href="#" class="filter-btn">สูท</a>
+            <a href="#" class="filter-btn">รองเท้า</a>
+            <a href="#" class="filter-btn">อุปกรณ์เสริม</a>
+        </div>
+    </div>
+
+    <!-- Sort and Filter Bar -->
+    <div class="sort-filter-bar">
+        <div class="filter-count">
+            <span>SORT + FILTER</span>
+        </div>
+        <button class="view-btn">
+            <svg viewBox="0 0 24 24" class="grid-icon">
+                <rect x="3" y="3" width="7" height="7"/>
+                <rect x="14" y="3" width="7" height="7"/>
+                <rect x="3" y="14" width="7" height="7"/>
+                <rect x="14" y="14" width="7" height="7"/>
+            </svg>
+        </button>
+    </div>
+
+    <!-- Product Grid -->
+    <div class="product-grid">
+        <article class="product-card">
+            <a href="product-detail.html" class="product-link">
+                <div class="product-image-container">
+                    <div class="product-gallery-items">
+                        <div class="product-gallery-item active">
+                            <figure class="product-gallery-figure">
+                                <img src="images\men1.jpg" 
+                                     alt="SLIM FIT SHIRT" 
+                                     class="product-gallery-image">
+                            </figure>
+                        </div>
+                    </div>
+                    <button class="wishlist-btn" onclick="toggleWishlist(this)">
+                        <svg viewBox="0 0 24 24" class="wishlist-icon">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                        </svg>
+                    </button>
+                </div>
+                <div class="product-info">
+                    <h3>LOOSE FIT T-SHIRT x VEGEA™</h3>
+                    <div class="price-group">
+                        <span class="new-price">฿ 359</span>
+                        <span class="old-price">฿ 599</span>
+                    </div>
+                    <p class="new-arrival">Sale !!</p>
+                    <p class="fabric-tag">VEGEA™</p>
+                </div>
+            </a>
+        </article>
+
+        <article class="product-card">
+            <div class="product-link">
+                <div class="product-image-container">
+                    <div class="product-gallery-items">
+                        <div class="product-gallery-item active">
+                            <figure class="product-gallery-figure">
+                                <img src="images/men3.png" 
+                                     alt="REGULAR FIT JEANS" 
+                                     class="product-gallery-image">
+                            </figure>
+                        </div>
+                    </div>
+                    <button class="wishlist-btn" onclick="toggleWishlist(this)">
+                        <svg viewBox="0 0 24 24" class="wishlist-icon">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                        </svg>
+                    </button>
+                </div>
+                <div class="product-info">
+                    <h3>REGULAR FIT <br>COLD SUIT</h3>
+                    <div class="price-group">
+                        <span class="new-price">฿ 900</span>
+                        <span class="old-price">฿ 1,500</span>
+                    </div>
+                    <p class="new-arrival">Sale !!</p>
+                    <p class="fabric-tag">COLD TECH</p>
+                </div>
+            </div>
+        </article>
+
+        <article class="product-card">
+            <div class="product-link">
+                <div class="product-image-container">
+                    <div class="product-gallery-items">
+                        <div class="product-gallery-item active">
+                            <figure class="product-gallery-figure">
+                                <img src="images\men4.0.png" 
+                                     alt="CoolCraft Pro" 
+                                     class="product-gallery-image">
+                            </figure>
+                        </div>
+                        <div class="product-gallery-item">
+                            <figure class="product-gallery-figure">
+                                <img src="images/men4.png" 
+                                     alt="CoolCraft Pro" 
+                                     class="product-gallery-image">
+                            </figure>
+                        </div>
+                        <div class="product-gallery-item">
+                            <figure class="product-gallery-figure">
+                                <img src="images/men5.png" 
+                                     alt="CoolCraft Pro" 
+                                     class="product-gallery-image">
+                            </figure>
+                        </div>
+                    </div>
+                    <button class="wishlist-btn" onclick="toggleWishlist(this)">
+                        <svg viewBox="0 0 24 24" class="wishlist-icon">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                        </svg>
+                    </button>
+                </div>
+                <div class="product-info">
+                    <h3>COOLCRAFT SPORT PRO </h3>
+                    <p class="price">฿ 890</p>
+                    <div class="tag-group">
+                        <p class="new-arrival">New Arrival</p>
+                        <!-- <p class="fabric-tag">DRY-EX</p> -->
+                    </div>
+                </div>
+            </div>
+        </article>
+    </div>
+
+    <!-- Bottom Navigation -->
+    <nav class="bottom-nav">
+        <a href="index.html" class="nav-item">
+            <svg viewBox="0 0 24 24" class="nav-icon">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+            </svg>
+            <span>หน้าแรก</span>
+        </a>
+        <a href="search.html" class="nav-item">
+            <svg viewBox="0 0 24 24" class="nav-icon">
+                <circle cx="11" cy="11" r="8"></circle>
+                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <span>ค้นหา</span>
+        </a>
+        <a href="#" class="nav-item">
+            <svg viewBox="0 0 24 24" class="nav-icon">
+                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+            </svg>
+            <span>ชื่นชอบ</span>
+        </a>
+        <a href="#" class="nav-item">
+            <svg viewBox="0 0 24 24" class="nav-icon">
+                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+            <span>บัญชี</span>
+        </a>
+    </nav>
+
+    <script src="scripts/navigation.js"></script>
+    <script>
+        function toggleWishlist(button) {
+            button.classList.toggle('active');
+        }
+    </script>
+</body>
+</html> 

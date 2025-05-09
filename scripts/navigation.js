@@ -22,26 +22,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // กำหนด active state ตามหน้าปัจจุบัน
     const currentPath = window.location.pathname;
+    const currentPage = currentPath.split('/').pop() || 'index.html';
+    
+    // อัพเดท active state ของ bottom nav
     navItems.forEach(item => {
         const href = item.getAttribute('href');
-        if (href && (
-            currentPath.endsWith(href) || 
-            (currentPath === '/' && href === 'index.html') ||
-            (currentPath.endsWith('index.html') && href === 'index.html') ||
-            (currentPath.endsWith('search.html') && href === 'search.html')
-        )) {
+        if (href === currentPage) {
             item.classList.add('active');
         }
     });
 
-    // จัดการ Category Tabs
+    // อัพเดท active state ของ category tabs
     const categoryTabs = document.querySelectorAll('.tab-item');
     categoryTabs.forEach(tab => {
-        tab.addEventListener('click', (e) => {
-            e.preventDefault();
-            categoryTabs.forEach(t => t.classList.remove('active'));
+        const href = tab.getAttribute('href');
+        if (href === currentPage) {
             tab.classList.add('active');
-        });
+        }
     });
 
     // จัดการ Promo Banner
@@ -122,4 +119,13 @@ window.addEventListener('popstate', (event) => {
     if (event.state && event.state.section) {
         updateActiveStates(event.state.section);
     }
-}); 
+});
+
+// ฟังก์ชันสำหรับ toggle wishlist
+function toggleWishlist(button) {
+    button.classList.toggle('active');
+    const heartIcon = button.querySelector('.heart-icon');
+    if (heartIcon) {
+        heartIcon.style.fill = button.classList.contains('active') ? '#e50010' : 'none';
+    }
+} 
