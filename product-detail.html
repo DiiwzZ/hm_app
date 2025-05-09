@@ -93,7 +93,13 @@
             
             <div class="technology-image">
                 <h2 class="tech-title">Cross Section of 3D Fabric Technology</h2>
-                <img src="images/2Dpic.png" alt="Cross Section of 3D Fabric Technology" class="tech-diagram">
+                <video class="tech-video" autoplay loop muted playsinline poster="images/2Dpic.png">
+                    <source src="images/animation.mp4" type="video/mp4">
+                    <source src="images/animation.webm" type="video/webm">
+                    <!-- Fallback สำหรับเบราว์เซอร์ที่ไม่รองรับวิดีโอ -->
+                    <p>เบราว์เซอร์ของคุณไม่รองรับการเล่นวิดีโอ</p>
+                    <img src="images/2Dpic.png" alt="Cross Section of 3D Fabric Technology" class="tech-diagram">
+                </video>
                 <p class="tech-caption">เทคโนโลยีเนื้อผ้าแบบ 3D ช่วยในการระบายอากาศ</p>
             </div>
             
@@ -151,9 +157,18 @@
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     const techImage = entry.target;
-                    const elements = techImage.querySelectorAll('.tech-title, .tech-diagram, .tech-caption');
+                    const elements = techImage.querySelectorAll('.tech-title, .tech-video, .tech-caption');
                     techImage.classList.add('animate');
                     elements.forEach(el => el.classList.add('animate'));
+                    
+                    // เริ่มเล่นวิดีโอเมื่อมองเห็น
+                    const video = techImage.querySelector('.tech-video');
+                    if (video) {
+                        video.play().catch(function(error) {
+                            console.log("Video play failed:", error);
+                        });
+                    }
+                    
                     observer.unobserve(techImage);
                 }
             });
